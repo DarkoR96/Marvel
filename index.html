@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Marvel API Challenge</title>
+    <link rel="icon" href="./css/img/icon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+    <script src="./js/loader.js"></script>
+    <script src='https://cdn.polyfill.io/v2/polyfill.min.js'></script>
+  </head>
+
+  <!-- PAGE LOADER -->
+  <div id="load_screen">
+  <div id="preloader">
+  <div id="loader">
+  </div>
+  </div>
+  </div>
+  <!-- CONTENT LOADER -->
+  <div id="conLoad"></div>
+  <!-- END OF LOADERS -->
+
+  <body>
+  <div id="app">
+    <!-- HEADER -->
+    <div class="container" id="hd">
+      <nav class="navigation">
+        <img src="./css/img/bg.png" alt="" class="header-pic">   
+      </nav>
+    <div id="search-bar">
+      <input type="text" name="search" value="" id="search" placeholder="Search..." v-model="search" @keyup="searchHero">
+        <button class="close-search" @click="clearSearch(); searchHero();">X</button>
+    </div>
+    </div>
+      <div class="container" id="wraper">
+      <template v-for="hero in heroes">
+        <article class="hero" :style="{background: 'url('+hero.thumbnail.path+'/portrait_incredible.'+hero.thumbnail.extension+')'}">
+          <div class="hero-name" >
+            <p @click="bookmarkHero(hero)">{{ hero.name }}<span id="bookmark" v-html="hero.star"></span></p>
+          </div>
+        </article>
+      </template>
+    </div>
+        <!-- PAGINATION -->
+        <div class="pagination" v-if="afterApi">
+          <button class="btn" id="prev" @click="pagination('prev')" v-if="off > 0" >BACK </button>
+          <button class="btn" id="next" @click="pagination('next')" v-if="heroes.length">NEXT </button>
+          <footer id="footer">
+            <a href="http://marvel.com"><span>{{footer.attributionText}}</span></a>
+          </footer>
+        </div>
+    </div>
+  <!-- SCRIPTS -->
+  <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="./js/marvel.js"></script>
+  </body>
+</html>

@@ -1,0 +1,9 @@
+
+
+1. Registrovao sam se na developer.marvel.com i preuzeo API Key. 
+
+2. U dokumentaciji na sajtu sam nasao kako da izvucem potrebne resurse koristeci API.
+
+3. Koristio sam Vue uz Axios za GET requests, jer mislim da je dosta jednostavniji od Angular-a.
+
+4.  Aplikacija ne radi kako treba u IE. Nisam uspeo to da sredim, da budem iskren.
